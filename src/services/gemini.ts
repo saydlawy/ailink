@@ -1,7 +1,7 @@
 import { GoogleGenAI } from '@google/genai';
 
 // قراءة المفتاح من الخزنة السرية بطريقة Vite الصحيحة
-const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+const apiKey = (import.meta as any).env.VITE_GEMINI_API_KEY;
 
 if (!apiKey) {
   console.error("VITE_GEMINI_API_KEY is missing in .env file");

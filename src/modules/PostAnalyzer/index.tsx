@@ -52,17 +52,17 @@ export const PostAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-        <h2 className="text-2xl font-bold text-slate-800 mb-2">{t('postAnalyzer.title')}</h2>
-        <p className="text-slate-500 mb-6">{t('postAnalyzer.subtitle')}</p>
+    <div className="space-y-4 lg:space-y-6">
+      <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h2 className="text-xl lg:text-2xl font-bold text-slate-800 mb-2">{t('postAnalyzer.title')}</h2>
+        <p className="text-sm lg:text-base text-slate-500 mb-4 lg:mb-6">{t('postAnalyzer.subtitle')}</p>
         
         <div className="space-y-4">
           <textarea
             value={postContent}
             onChange={(e) => setPostContent(e.target.value)}
             placeholder={t('postAnalyzer.placeholder')}
-            className="w-full h-48 p-4 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all"
+            className="w-full h-32 lg:h-48 p-3 lg:p-4 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none transition-all"
             dir="auto"
           />
           
@@ -70,7 +70,7 @@ export const PostAnalyzer: React.FC = () => {
             <button
               onClick={handleAnalyze}
               disabled={!postContent.trim() || isAnalyzing}
-              className="flex items-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 px-6 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
             >
               {isAnalyzing ? (
                 <Loader2 className="w-5 h-5 animate-spin" />
@@ -84,8 +84,8 @@ export const PostAnalyzer: React.FC = () => {
       </div>
 
       {results && (
-        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-200 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <h3 className="text-lg lg:text-xl font-bold text-slate-800 mb-4 lg:mb-6 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-blue-500" />
             {t('postAnalyzer.results')}
           </h3>

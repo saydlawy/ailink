@@ -13,9 +13,11 @@ export type ModuleType = 'postAnalyzer' | 'contentPlanner' | 'profileAnalyzer' |
 interface SidebarProps {
   activeModule: ModuleType;
   setActiveModule: (module: ModuleType) => void;
+  isOpen?: boolean;
+  onClose?: () => void;
 }
 
-export const Sidebar: React.FC<SidebarProps> = ({ activeModule, setActiveModule }) => {
+export const Sidebar: React.FC<SidebarProps> = ({ activeModule, setActiveModule, isOpen = false, onClose }) => {
   const { t, dir } = useLanguage();
 
   const menuItems: { id: ModuleType; icon: React.ElementType; labelKey: string }[] = [
@@ -26,11 +28,23 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, setActiveModule 
   ];
 
   return (
-    <aside className={cn(
-      "fixed top-0 bottom-0 z-40 w-64 bg-slate-900 text-white transition-transform",
-      dir === 'rtl' ? 'right-0 border-l border-slate-800' : 'left-0 border-r border-slate-800'
-    )}>
-      <div className="h-full px-3 py-6 overflow-y-auto">
+    <>
+      {/* Overlay for mobile */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-slate-900/50 backdrop-blur-sm lg:hidden"
+          onClick={onClose}
+        />
+      )}
+
+      <aside className={cn(
+        "fixed top-0 bottom-0 z-50 w-64 bg-slate-900 text-white transition-transform duration-300",
+        dir === 'rtl'
+          ? 'right-0 border-l border-slate-800'
+          : 'left-0 border-r border-slate-800',
+        isOpen ? 'translate-x-0' : (dir === 'rtl' ? 'translate-x-full lg:translate-x-0' : '-translate-x-full lg:translate-x-0')
+      )}>
+        <div className="h-full px-3 py-6 overflow-y-auto">
         <div className="mb-10 px-4">
           <h1 className="text-xl font-bold bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
             LinkedIn Strategy
@@ -60,5 +74,6 @@ export const Sidebar: React.FC<SidebarProps> = ({ activeModule, setActiveModule 
         </ul>
       </div>
     </aside>
+    </>
   );
 };
