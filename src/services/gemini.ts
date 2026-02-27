@@ -1,7 +1,13 @@
 import { GoogleGenAI } from '@google/genai';
 
-// Initialize the SDK using the injected environment variable from vite.config.ts
-const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+// قراءة المفتاح من الخزنة السرية بطريقة Vite الصحيحة
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+
+if (!apiKey) {
+  console.error("VITE_GEMINI_API_KEY is missing in .env file");
+}
+
+const ai = new GoogleGenAI({ apiKey: apiKey });
 
 /**
  * Generates standard content using gemini-2.5-flash.
