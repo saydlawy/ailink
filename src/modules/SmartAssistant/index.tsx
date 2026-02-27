@@ -146,6 +146,7 @@ export const SmartAssistant: React.FC = () => {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
             placeholder={t('smartAssistant.placeholder')}
+            aria-label={t('smartAssistant.placeholder')}
             className={cn(
               "w-full py-4 bg-slate-50 border border-slate-200 rounded-full focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all",
               language === 'ar' ? 'pr-6 pl-14' : 'pl-6 pr-14'
@@ -155,6 +156,7 @@ export const SmartAssistant: React.FC = () => {
           <button
             onClick={() => handleSend(input)}
             disabled={!input.trim() || isLoading}
+            aria-label={t('smartAssistant.send')}
             className={cn(
               "absolute top-1/2 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-colors",
               language === 'ar' ? 'left-2' : 'right-2',
