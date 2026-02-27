@@ -155,12 +155,12 @@ export const ContentPlanner: React.FC = () => {
   );
 
   return (
-    <div className="space-y-6">
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-        <h2 className="text-2xl font-bold text-slate-800 mb-2">{t('contentPlanner.title')}</h2>
-        <p className="text-slate-500 mb-8">{t('contentPlanner.subtitle')}</p>
+    <div className="space-y-4 lg:space-y-6">
+      <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h2 className="text-xl lg:text-2xl font-bold text-slate-800 mb-2">{t('contentPlanner.title')}</h2>
+        <p className="text-sm lg:text-base text-slate-500 mb-6 lg:mb-8">{t('contentPlanner.subtitle')}</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6">
           {/* Text Inputs */}
           <div className="col-span-1 md:col-span-2 lg:col-span-3 space-y-1.5">
             <label className="block text-sm font-medium text-slate-700">{t('contentPlanner.coreTopic')} *</label>
@@ -168,7 +168,7 @@ export const ContentPlanner: React.FC = () => {
               type="text"
               value={formData.coreTopic}
               onChange={(e) => handleChange('coreTopic', e.target.value)}
-              className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2.5 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., The impact of AI on supply chain logistics"
             />
           </div>
@@ -179,7 +179,7 @@ export const ContentPlanner: React.FC = () => {
               type="text"
               value={formData.targetAudience}
               onChange={(e) => handleChange('targetAudience', e.target.value)}
-              className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2.5 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., Supply Chain Managers, Operations Directors"
             />
           </div>
@@ -213,17 +213,17 @@ export const ContentPlanner: React.FC = () => {
             <textarea
               value={formData.extraNotes}
               onChange={(e) => handleChange('extraNotes', e.target.value)}
-              className="w-full h-24 p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+              className="w-full h-24 p-2.5 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
               placeholder="Any specific keywords, names, or constraints..."
             />
           </div>
         </div>
 
-        <div className="mt-8 flex justify-end">
+        <div className="mt-6 lg:mt-8 flex justify-end">
           <button
             onClick={handleGenerate}
             disabled={!formData.coreTopic.trim() || isGenerating}
-            className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isGenerating ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -236,9 +236,9 @@ export const ContentPlanner: React.FC = () => {
       </div>
 
       {generatedPost && (
-        <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200 animate-in fade-in slide-in-from-bottom-4 duration-500">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-bold text-slate-800 flex items-center gap-2">
+        <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-200 animate-in fade-in slide-in-from-bottom-4 duration-500">
+          <div className="flex justify-between items-center mb-4 lg:mb-6">
+            <h3 className="text-lg lg:text-xl font-bold text-slate-800 flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-blue-500" />
               Generated Post
             </h3>

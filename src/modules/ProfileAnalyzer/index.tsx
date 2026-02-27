@@ -141,20 +141,20 @@ export const ProfileAnalyzer: React.FC = () => {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-4 lg:space-y-6">
       {/* Input Section */}
-      <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-        <h2 className="text-2xl font-bold text-slate-800 mb-2">{t('profileAnalyzer.title')}</h2>
-        <p className="text-slate-500 mb-8">{t('profileAnalyzer.subtitle')}</p>
+      <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-200">
+        <h2 className="text-xl lg:text-2xl font-bold text-slate-800 mb-2">{t('profileAnalyzer.title')}</h2>
+        <p className="text-sm lg:text-base text-slate-500 mb-6 lg:mb-8">{t('profileAnalyzer.subtitle')}</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6 mb-6 lg:mb-8">
           <div className="space-y-1.5 md:col-span-2">
             <label className="block text-sm font-medium text-slate-700">{t('profileAnalyzer.profileUrl')}</label>
             <input
               type="url"
               value={profileUrl}
               onChange={(e) => setProfileUrl(e.target.value)}
-              className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2.5 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="https://linkedin.com/in/username"
               dir="ltr"
             />
@@ -166,7 +166,7 @@ export const ProfileAnalyzer: React.FC = () => {
               type="text"
               value={targetTitle}
               onChange={(e) => setTargetTitle(e.target.value)}
-              className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2.5 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., CEO, HR Manager, Investor"
             />
           </div>
@@ -177,7 +177,7 @@ export const ProfileAnalyzer: React.FC = () => {
               type="text"
               value={positioningGoal}
               onChange={(e) => setPositioningGoal(e.target.value)}
-              className="w-full p-2.5 bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full p-2.5 text-sm lg:text-base bg-slate-50 border border-slate-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               placeholder="e.g., Pharma Operations Expert, HealthTech Founder"
             />
           </div>
@@ -187,7 +187,7 @@ export const ProfileAnalyzer: React.FC = () => {
         <div 
           onClick={() => fileInputRef.current?.click()}
           className={cn(
-            "border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-colors",
+            "border-2 border-dashed rounded-xl p-6 lg:p-8 text-center cursor-pointer transition-colors",
             file ? "border-emerald-400 bg-emerald-50" : "border-slate-300 hover:border-blue-400 hover:bg-blue-50"
           )}
         >
@@ -201,24 +201,24 @@ export const ProfileAnalyzer: React.FC = () => {
           <div className="flex flex-col items-center justify-center space-y-3">
             {file ? (
               <>
-                <CheckCircle2 className="w-10 h-10 text-emerald-500" />
-                <span className="text-emerald-700 font-medium">{file.name}</span>
+                <CheckCircle2 className="w-8 h-8 lg:w-10 lg:h-10 text-emerald-500" />
+                <span className="text-emerald-700 font-medium text-sm lg:text-base">{file.name}</span>
               </>
             ) : (
               <>
-                <UploadCloud className="w-10 h-10 text-slate-400" />
-                <span className="text-slate-600 font-medium">{t('profileAnalyzer.uploadData')}</span>
-                <span className="text-slate-400 text-sm">Drag and drop or click to browse</span>
+                <UploadCloud className="w-8 h-8 lg:w-10 lg:h-10 text-slate-400" />
+                <span className="text-slate-600 font-medium text-sm lg:text-base">{t('profileAnalyzer.uploadData')}</span>
+                <span className="text-slate-400 text-xs lg:text-sm">Drag and drop or click to browse</span>
               </>
             )}
           </div>
         </div>
 
-        <div className="mt-8 flex justify-end">
+        <div className="mt-6 lg:mt-8 flex justify-end">
           <button
             onClick={handleAnalyze}
             disabled={!profileUrl || !targetTitle || !positioningGoal || !file || isAnalyzing}
-            className="flex items-center gap-2 px-8 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-8 py-3 bg-blue-600 text-white font-medium rounded-xl hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
             {isAnalyzing ? (
               <Loader2 className="w-5 h-5 animate-spin" />
@@ -232,11 +232,11 @@ export const ProfileAnalyzer: React.FC = () => {
 
       {/* Results Section */}
       {result && (
-        <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+        <div className="space-y-4 lg:space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
           
           {/* Chart Section */}
-          <div className="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
-            <h3 className="text-xl font-bold text-slate-800 mb-6 flex items-center gap-2">
+          <div className="bg-white p-4 lg:p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h3 className="text-lg lg:text-xl font-bold text-slate-800 mb-4 lg:mb-6 flex items-center gap-2">
               <Target className="w-5 h-5 text-blue-500" />
               Demographics Gap Analysis
             </h3>
